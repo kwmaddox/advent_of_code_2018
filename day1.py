@@ -1,5 +1,5 @@
 import decorators
-from itertools import accumulate, cycle, tee
+from itertools import accumulate, cycle
 
 
 @decorators.timer
