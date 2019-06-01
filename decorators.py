@@ -5,9 +5,10 @@ def timer(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         start = time.perf_counter()
-        func()
+        output = func()
         end = time.perf_counter()
         print(f'{func.__name__} ran in {end - start} seconds')
+        return output
     return wrapper
 
 def fileio(file_path):
@@ -15,7 +16,7 @@ def fileio(file_path):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             with open(file_path) as f:
-                func(f, *args, **kwargs)
+                return func(f, *args, **kwargs)
         return wrapper
     return decorator_fileio
         
