@@ -1,2 +1,3 @@
 __pycache__/*
-.pytesst_cache/*
+.pytest_cache/*
+.vscode/*
