@@ -12,7 +12,7 @@ def part1(data):
 @decorators.fileio('day1_input')
 def part2(data):
     freq = (int(item.strip().strip('+')) for item in data.readlines())
-    freq_set = set()
+    freq_set = set([0])
     for item in accumulate(cycle(freq)):
         if item in freq_set:
             return item
