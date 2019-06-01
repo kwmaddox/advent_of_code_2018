@@ -1,5 +1,7 @@
 import time
 import functools
+from unittest import mock
+
 
 def timer(func):
     @functools.wraps(func)
@@ -19,4 +21,13 @@ def fileio(file_path):
                 return func(f, *args, **kwargs)
         return wrapper
     return decorator_fileio
+
+def patch_io(test_input_name):
+    def decorator_patch_io(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            with mock.patch("decorators.open", mock.mock_open(read_data=kwargs[test_input_name])) as mock_file:
+                return func(*args, **kwargs)
+        return wrapper
+    return decorator_patch_io
         
